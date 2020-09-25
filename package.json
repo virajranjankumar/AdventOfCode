@@ -1,0 +1,20 @@
+{
+  "name": "advent-of-code",
+  "version": "1.0.0",
+  "description": "My Solutions to the Advent of Code challenge",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/virajranjankumar/AdventOfCode.git"
+  },
+  "keywords": [],
+  "author": "Viraj Ranjankumar <viraj.ranjankumar@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/virajranjankumar/AdventOfCode/issues"
+  },
+  "homepage": "https://github.com/virajranjankumar/AdventOfCode#readme"
+}
