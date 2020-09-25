@@ -1,32 +1,12 @@
-const assert = require('assert').strict
-const fs = require('fs')
-const readline = require('readline')
+const totalFuelDay1 = require('./day1-1').totalFuel
+const totalFuelDay2 = require('./day1-2').totalFuel
 
-const fuelRequired = (mass) =>
-  Math.floor(mass / 3) - 2
+async function main() {
+    const day1 = await totalFuelDay1()
+    console.log('Day 1-1: ', day1)
 
-assert.strictEqual(fuelRequired(12), 2)
-assert.strictEqual(fuelRequired(14), 2)
-assert.strictEqual(fuelRequired(1_969), 654)
-assert.strictEqual(fuelRequired(100_756), 33583)
-
-async function totalFuel(inputFile = './input/day1.txt') {
-  const fileStream = fs.createReadStream(inputFile)
-  const rl = readline.createInterface({
-    input: fileStream,
-    crlfDelay: Infinity
-  })
-
-  let total = 0
-
-  for await (const line of rl) {
-    const mass = parseInt(line)
-    total += fuelRequired(mass)
-  }
-
-  console.log(total);
+    const day2 = await totalFuelDay2()
+    console.log('Day 1-2: ', day2)
 }
 
-totalFuel()
-
-// Answer: 3457281
+main()
