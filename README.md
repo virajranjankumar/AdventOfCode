@@ -4,9 +4,12 @@ My Solutions to the Advent of Code challenge
 
 Quickstart
 
+> npm install
 > npm start
 
 ## Usage
+
+Please run _npm install_ to install dependencies, and then run _npm start_ to run through and get all the solutions.
 
 ```
 npm start
