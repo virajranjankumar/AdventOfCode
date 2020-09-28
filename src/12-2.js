@@ -1,8 +1,7 @@
 const assert = require("assert").strict;
 const fs = require("fs");
-const { endianness } = require("os");
 
-const totalEnergyOfSystem = (text, steps = 10) => {
+const totalNumberOfSteps = (text, steps = 10) => {
   const positions = text.split("\n");
   const re = /^<x=(-?\d*), y=(-?\d*), z=(-?\d*)>$/i;
   let moons = positions.map((p, i) => {
@@ -13,19 +12,38 @@ const totalEnergyOfSystem = (text, steps = 10) => {
       velocity: { x: 0, y: 0, z: 0 },
     };
   });
-  for (let t = 0; t < steps; t++) {
+  const previousStates = [];
+  let i = 0;
+  while (true) {
     moons = timeStep(moons);
+    const energy = moons.map(calculateEnergy).reduce((a, b) => a + b, 0);
+    const key = moons.map(serializeMoon).join(":");
+
+    if (previousStates[energy] !== undefined) {
+      const statesWithSameEnergy = previousStates[energy];
+      if (statesWithSameEnergy.has(key)) return i;
+      else statesWithSameEnergy.add(key);
+    } else {
+      previousStates[energy] = new Set([key]);
+    }
+
+    i++;
+    if (i % 1_000_000 === 0) {
+      console.log(i);
+    }
   }
-  const energy = moons.map(calculateEnergy).reduce((a, b) => a + b, 0);
-  return energy;
 };
+
+const serializeMoon = ({
+  position: { x: px, y: py, z: pz },
+  velocity: { x: vx, y: vy, z: vz },
+}) => `${px},${py},${pz}|${vx},${vy},${vz}`;
 
 const applyVelocities = (moon) => {
   const {
     position: { x: px, y: py, z: pz },
     velocity: { x: vx, y: vy, z: vz },
   } = moon;
-
   return {
     ...moon,
     position: { x: px + vx, y: py + vy, z: pz + vz },
@@ -62,18 +80,10 @@ const timeStep = (moons) => {
   return result;
 };
 
-assert.deepStrictEqual(
-  totalEnergyOfSystem(`<x=-1, y=0, z=2>
-<x=2, y=-10, z=-7>
-<x=4, y=-8, z=8>
-<x=3, y=5, z=-1>`),
-  179
-);
-
 function main(inputFile = "./input/day12.txt") {
   const text = fs.readFileSync(inputFile, "utf-8").trim();
-  return totalEnergyOfSystem(text, 1000);
+  return totalNumberOfSteps(text);
 }
 
-console.log(main());
+module.exports = { totalNumberOfSteps, main };
 // Answer: 8287

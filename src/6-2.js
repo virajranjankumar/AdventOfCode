@@ -1,4 +1,3 @@
-const assert = require("assert").strict;
 const fs = require("fs");
 
 class Queue extends Array {
@@ -94,28 +93,11 @@ const compute = (rawMap) => {
   return path.length - 2 - 1;
 };
 
-assert.deepStrictEqual(
-  compute(`COM)B
-B)C
-C)D
-D)E
-E)F
-B)G
-G)H
-D)I
-E)J
-J)K
-K)L
-K)YOU
-I)SAN`),
-  4
-);
-
 function main(inputFile = "./input/day6.txt") {
   const text = fs.readFileSync(inputFile, "utf-8");
   const result = compute(text);
   return result;
 }
 
-console.log(main());
+module.exports = { compute, main };
 // Answer 466

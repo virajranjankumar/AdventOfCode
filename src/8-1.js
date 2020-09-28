@@ -28,5 +28,5 @@ function main(inputFile = "./input/day8.txt") {
   return compute(text, 25, 6);
 }
 
-console.log(main());
+module.exports = { compute, main };
 // Answer: 1320

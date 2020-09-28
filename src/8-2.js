@@ -1,5 +1,4 @@
 const fs = require("fs");
-const assert = require("assert").strict;
 
 const getLayers = (line, width, height) => {
   const layerLength = width * height;
@@ -27,8 +26,6 @@ const compute = (line, width, height) => {
     .join("");
 };
 
-assert.deepStrictEqual(compute("0222112222120000", 2, 2), "0110");
-
 function main(inputFile = "./input/day8.txt") {
   const [width, height] = [25, 6];
   const text = fs.readFileSync(inputFile, "utf-8");
@@ -42,5 +39,5 @@ function main(inputFile = "./input/day8.txt") {
   return layers;
 }
 
-console.log(main());
+module.exports = { compute, main };
 // Answer: RCYKR

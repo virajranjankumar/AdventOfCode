@@ -1,12 +1,31 @@
-const totalFuelDay1 = require('./day1-1').totalFuel
-const totalFuelDay2 = require('./day1-2').totalFuel
+const run = async (day, part) => {
+  try {
+    const { main } = require(`./src/${day}-${part}.js`);
+    const result = await main();
+    console.log(`[RESULT]: Day ${day} part ${part}`, result);
+  } catch (e) {
+    console.log(e);
+    console.log(`[FAILED]: Day ${day} part ${part}`);
+  }
+};
 
-async function main() {
-    const day1 = await totalFuelDay1()
-    console.log('Day 1-1: ', day1)
+const main = async () => {
+  Promise.all([
+    run(1, 1),
+    run(1, 2),
+    run(2, 1),
+    run(2, 2),
+    run(3, 1),
+    run(3, 2),
+    run(4, 1),
+    run(6, 1),
+    run(6, 2),
+    run(8, 1),
+    run(8, 2),
+    run(12, 1),
+  ]).then(() => {
+    console.log("DONE");
+  });
+};
 
-    const day2 = await totalFuelDay2()
-    console.log('Day 1-2: ', day2)
-}
-
-main()
+main();

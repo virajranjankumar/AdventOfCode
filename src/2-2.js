@@ -1,4 +1,3 @@
-const assert = require("assert").strict;
 const fs = require("fs");
 
 const add = (i, j) => i + j;
@@ -39,18 +38,17 @@ function* generateNounVerbCombinations(program, noun, verb) {
   }
 }
 
-async function computer(inputFile = "./input/day2.txt", ans) {
+async function main(inputFile = "./input/day2.txt", ans = 19690720) {
   const text = fs.readFileSync(inputFile, "utf-8");
   const program = text.split(",").map((i) => parseInt(i));
   for (const p of generateNounVerbCombinations(program, 100, 100)) {
     const [result, noun, verb] = compute([...p]);
     if (result === ans) {
-      console.log("ANSWER", result, noun, verb);
       return 100 * noun + verb;
     }
   }
   console.log("No Soution Found");
 }
 
-computer("./input/day2.txt", 19690720).then(console.log);
+module.exports = { main };
 // Answer: 5335

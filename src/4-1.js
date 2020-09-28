@@ -1,6 +1,3 @@
-const [start, end] = [137683, 596253];
-const range = end - start;
-
 const convertToDigits = (v) => {
   const val = v.toString();
   const output = [];
@@ -10,7 +7,7 @@ const convertToDigits = (v) => {
   return output;
 };
 
-const nonDecreasing = () => {
+const nonDecreasing = (start, end) => {
   let output = [];
   for (let i = start; i < end; i++) {
     const digits = convertToDigits(i);
@@ -27,7 +24,7 @@ const isNonDecreasing = ([a, b, c, d, e, f]) =>
 const hasAtLeastOneConsecutivePair = ([a, b, c, d, e, f]) =>
   a === b || b === c || c === d || d === e || e === f;
 
-const main = () => nonDecreasing().filter(hasAtLeastOneConsecutivePair).length;
+const main = (start = 137683, end = 596253) =>
+  nonDecreasing(start, end).filter(hasAtLeastOneConsecutivePair).length;
 
-console.log(main());
-// Answer: 1864
+module.exports = { main };

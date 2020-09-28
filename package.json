@@ -4,6 +4,7 @@
   "description": "My Solutions to the Advent of Code challenge",
   "main": "index.js",
   "scripts": {
+    "test": "node test/index.js",
     "start": "node index.js"
   },
   "repository": {
