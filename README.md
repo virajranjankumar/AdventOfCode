@@ -4,8 +4,10 @@ My Solutions to the Advent of Code challenge
 
 Quickstart
 
-> npm install
-> npm start
+```
+npm install
+npm start
+```
 
 ## Usage
 
