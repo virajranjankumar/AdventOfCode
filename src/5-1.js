@@ -35,6 +35,7 @@ const computeSingleLine = ([codeAndMode, i1, i2, o1], output) => {
   return output;
 };
 
+// what diagnostic code does the program instructions produce?
 const compute = (instructions = []) => {
   let address = 0;
   let [code] = instructions;

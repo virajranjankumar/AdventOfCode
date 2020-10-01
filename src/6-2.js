@@ -82,6 +82,7 @@ class BreadthFirstPaths {
   }
 }
 
+// What is the minimum number of orbital transfers required from YOU -> SAN?
 const compute = (rawMap) => {
   const pairs = rawMap.split("\n");
   const edges = pairs.map((p) => p.split(")"));

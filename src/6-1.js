@@ -49,6 +49,7 @@ const getPathLength = (graph, source) => {
   return Object.values(directedGraph.marked).filter((i) => i).length - 1;
 };
 
+// What is the total number of direct and indirect orbits in the map data?
 const compute = (rawMap) => {
   const pairs = rawMap.split("\n");
   const edges = pairs.map((p) => p.split(")"));

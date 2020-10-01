@@ -2,6 +2,12 @@ const fs = require("fs");
 const readline = require("readline");
 const baseFuelRequired = require("./1-1").fuelRequired;
 
+/**
+ * Calculate fuel required for the mass of the module and the fuel mass.
+ *
+ * @param {number} mass Module mass
+ * @returns {number} Fuel required for mass and the additional fuel
+ */
 const fuelRequired = (mass) => {
   let totalFuel = baseFuelRequired(mass);
   let fuelWeight = baseFuelRequired(totalFuel);

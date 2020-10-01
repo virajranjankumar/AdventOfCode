@@ -1,6 +1,7 @@
 const assert = require("assert").strict;
 const fs = require("fs");
 
+// Simulate the universe of moons, by running the simulation #steps
 const totalEnergyOfSystem = (text, steps = 10) => {
   const positions = text.split("\n");
   const re = /^<x=(-?\d*), y=(-?\d*), z=(-?\d*)>$/i;

@@ -12,6 +12,8 @@ const getLayers = (line, width, height) => {
 
 const indexOfSmallest = (a) => a.indexOf(Math.min.apply(Math, a));
 
+// what is the number of 1 digits multiplied by the number of 2 digits?
+// given a line of pixel values
 const compute = (line, width, height) => {
   const layers = getLayers(line, width, height);
 

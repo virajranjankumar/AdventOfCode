@@ -14,6 +14,7 @@ const zip = (arr, ...arrs) => {
   return arr.map((val, i) => arrs.reduce((a, arr) => [...a, arr[i]], [val]));
 };
 
+// What message is produced after decoding the image?
 const compute = (line, width, height) => {
   const layers = getLayers(line, width, height).map((l) => l.split(""));
   return zip(...layers)

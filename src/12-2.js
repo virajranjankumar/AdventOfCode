@@ -4,6 +4,7 @@ const fs = require("fs");
 const totalNumberOfSteps = (text, steps = 10) => {
   const positions = text.split("\n");
   const re = /^<x=(-?\d*), y=(-?\d*), z=(-?\d*)>$/i;
+  // Convert from string representation to objects
   let moons = positions.map((p, i) => {
     const [_p, x, y, z] = p.match(re);
     return {
